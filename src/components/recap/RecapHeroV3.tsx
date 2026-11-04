@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 gsap.registerPlugin(ScrollTrigger)
 
 const VIDEO_URL =
-  'https://www.dropbox.com/scl/fi/jv8jljj1e8y3xnz3pwz8g/2026_NearCon_Sizzle.mp4?rlkey=xcrmj6o1gpv715zr3lwpgz7q6&st=dbjciyvz&dl=1'
+  'https://media-nearcon.nearinternal.space/2026_NearCon_Sizzle.mp4'
 
 export function RecapHeroV3({ mode = 'shrink' }: { mode?: 'shrink' | 'expand-shrink' }) {
   const triggerRef = useRef<HTMLDivElement>(null)

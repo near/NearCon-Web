@@ -30,6 +30,15 @@ const ALLOWED_SESSIONS = new Set([
   'Why Private AI Matters',
 ])
 
+function hasAirtableConfig(): boolean {
+  return Boolean(
+    process.env.AIRTABLE_TOKEN &&
+    process.env.AIRTABLE_BASE_ID &&
+    process.env.AIRTABLE_SESSIONS_TABLE_ID &&
+    process.env.AIRTABLE_SPEAKERS_TABLE_ID
+  )
+}
+
 async function getSpeakersMap(): Promise<SpeakerMap> {
   const res = await fetch(
     `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${process.env.AIRTABLE_SPEAKERS_TABLE_ID}`,
@@ -55,6 +64,11 @@ async function getSpeakersMap(): Promise<SpeakerMap> {
 }
 
 export async function getSessions(): Promise<Session[]> {
+  if (!hasAirtableConfig()) {
+    console.warn('Airtable env vars missing (AIRTABLE_TOKEN, AIRTABLE_BASE_ID, AIRTABLE_SESSIONS_TABLE_ID, AIRTABLE_SPEAKERS_TABLE_ID). Skipping sessions fetch.')
+    return []
+  }
+
   const [sessionsRes, speakersMap] = await Promise.all([
     fetch(
       `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${process.env.AIRTABLE_SESSIONS_TABLE_ID}`,

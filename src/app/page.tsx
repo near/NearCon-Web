@@ -29,8 +29,8 @@ export default async function RecapV3Page() {
       {/* Intro Section */}
       <RecapIntro />
 
-      {/* Session Highlights */}
-      <SessionHighlights sessions={sessions} />
+      {/* Session Highlights — oculta temporalmente (sin credenciales de Airtable)
+      <SessionHighlights sessions={sessions} /> */}
 
       {/* Session Videos */}
       <SessionVideos videos={videos} />
