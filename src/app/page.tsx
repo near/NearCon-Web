@@ -9,8 +9,6 @@ export const metadata: Metadata = {
 import { RecapV3HeroBlock } from '@/components/recap/RecapV3HeroBlock'
 import { RecapIntro } from '@/components/recap/RecapIntro'
 import { SessionHighlights } from '@/components/recap/SessionHighlights'
-import { AgentWars } from '@/components/recap/AgentWars'
-import { InnovationSandbox } from '@/components/recap/InnovationSandbox'
 import { RecapWhatToExpectV2 } from '@/components/recap/RecapWhatToExpectV2'
 import { ThankYouSponsors } from '@/components/recap/ThankYouSponsors'
 import { RecapCTA } from '@/components/recap/RecapCTA'
@@ -38,13 +36,7 @@ export default async function RecapV3Page() {
       {/* What to Expect */}
       <RecapWhatToExpectV2 />
 
-      {/* Agent Wars */}
-      <AgentWars />
-
-      {/* Innovation Sandbox */}
-      <InnovationSandbox />
-
-      {/* Thank You to Our Sponsors */}
+      {/* Thank You to Our 2026 Sponsors */}
       <ThankYouSponsors />
 
       {/* See you at NEARCON 2027 */}

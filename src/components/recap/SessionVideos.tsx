@@ -47,15 +47,17 @@ export function SessionVideos({ videos }: { videos: YTVideo[] }) {
           border-left-color: #65D56E;
         }
         .video-list {
+          overflow-y: scroll;
           scrollbar-width: thin;
-          scrollbar-color: #1a1a1a transparent;
+          scrollbar-color: #444 rgba(0, 0, 0, 0.12);
           padding-right: 10px;
         }
-        .video-list::-webkit-scrollbar { width: 4px; transition: width 0.2s; }
-        .video-list::-webkit-scrollbar-track { background: transparent; }
-        .video-list::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 2px; }
-        .video-list:hover::-webkit-scrollbar { width: 8px; }
-        .video-list:hover::-webkit-scrollbar-thumb { background: #444; }
+        .video-list::-webkit-scrollbar { width: 8px; }
+        .video-list::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.12); border-radius: 4px; }
+        .video-list::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+        .video-list::-webkit-scrollbar-thumb:hover { background: #1a1a1a; }
+        .video-thumb { width: 144px; height: 81px; }
+        @media (min-width: 768px) { .video-thumb { width: 220px; height: 124px; } }
         .videos-cta-btn { margin-top: 32px; }
         @media (min-width: 768px) { .videos-cta-btn { margin-top: 60px; } }
       `}</style>
@@ -106,7 +108,7 @@ export function SessionVideos({ videos }: { videos: YTVideo[] }) {
               {/* Scrollable list — fills remaining space */}
               <div
                 className="video-list"
-                style={{ flex: 1, overflowY: 'auto', minHeight: 0 }}
+                style={{ flex: 1, minHeight: 0 }}
               >
                 {videos.map((video) => {
                   const isActive = video.id === selectedId
@@ -122,14 +124,15 @@ export function SessionVideos({ videos }: { videos: YTVideo[] }) {
                         width: '100%',
                         textAlign: 'left',
                         background: '#000',
-                        padding: '13px',
+                        padding: '16px',
                         marginBottom: '8px',
                       }}
                     >
                       <img
                         src={video.thumbnail}
                         alt=""
-                        style={{ width: '100px', height: '56px', objectFit: 'cover', flexShrink: 0 }}
+                        className="video-thumb"
+                        style={{ objectFit: 'cover', flexShrink: 0 }}
                       />
                       <p
                         className="line-clamp-2"
